@@ -1,0 +1,76 @@
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;700&family=Righteous&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+/* all */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FB6B6B;
+    /* border: 1px solid #DBDBDB; */
+}
+
+/* App component */
+.App {
+
+}
+
+/* StartScreen component */
+.StartScreen {
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* StartLogo component */
+.StartLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.StartLogo img {
+    width: 136px;
+    height: 161px;
+}
+
+.StartLogo p {
+    width: 257px;
+    height: 59px;
+    font-family: 'Righteous';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+    letter-spacing: -0.012em;
+    margin: 13px 0 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+/* StartRecallButton component */
+.StartRecallButton button{
+    width: 246px;
+    height: 54px;
+    background-color: #FFFFFF;
+    border: 1px solid #D70900;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #D70900;
+}
+
+.StartRecallButton button:hover{
+    cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import Header from './Header.js';
+/* import Header from './Header.js';
 import Main from './Main.js';
 import Footer from './Footer.js';
 
@@ -10,4 +10,4 @@ export default function PlayScreen() {
             <Footer />
         </div>
     )
-}
+} */
