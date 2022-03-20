@@ -5,7 +5,6 @@ export default function FlashCard({questionNumber, question, answer, userAnswer}
     const [flip, setFlip] = React.useState(false);
     const [usrAnswer, setUsrAnswer] = React.useState("");
     let questionStatusImg = "";
-
     return (
         <div className="FlashCard">
             <FlashCardQuestionNumberFace questionNumber={questionNumber} openQuestion={openQuestion} setOpenQuestion={setOpenQuestion}/>
@@ -43,9 +42,9 @@ function FlashCardBackFace({answer, openQuestion, flip, usrAnswer, setUsrAnswer}
         <div className="backFace" style={{display: (openQuestion && flip && (usrAnswer==="")) ? 'flex' : 'none'}}>
             <p>{answer}</p>
             <div className="backFacebuttons">
-                <button onClick={() => setUsrAnswer("red")}>Não lembrei</button>
-                <button onClick={() => setUsrAnswer("yellow")}>Quase não lembrei</button>
-                <button onClick={() => setUsrAnswer("green")}>Zap!</button>
+                <button id="red" onClick={() => setUsrAnswer("red")}>Não lembrei</button>
+                <button id="yellow" onClick={() => setUsrAnswer("yellow")}>Quase não lembrei</button>
+                <button id="green" onClick={() => setUsrAnswer("green")}>Zap!</button>
             </div>
         </div>
     )
@@ -58,7 +57,7 @@ function FlashCardFinalStatus({questionNumber, usrAnswer, questionStatusImg, ope
     } 
     else if (usrAnswer==="yellow"){
         questionStatusImg = "../assets/images/yellow.png";
-        userAnswer = "yellow";
+        userAnswer = "orange";
     }
     else if (usrAnswer==="green"){
         questionStatusImg = "../assets/images/green.png";
@@ -69,7 +68,7 @@ function FlashCardFinalStatus({questionNumber, usrAnswer, questionStatusImg, ope
     }
     return (
         <div className="finalStatus" style={{display: (openQuestion && flip && (usrAnswer!=="")) ? 'flex' : 'none'}}>
-            <p>Pergunta {questionNumber}</p>
+            <p style={{color: userAnswer}}>Pergunta {questionNumber}</p>
             <div className="finalStatusImg">
                 <img src={questionStatusImg} alt="final status" />
             </div>
