@@ -1,7 +1,4 @@
-import React from "react";
-
-export default function StartScreen() {
-    const [hidden,setHidden] = React.useState(false);
+export default function StartScreen({hidden, setHidden}) {
     return (
         <div className="StartScreen" style={{display: hidden ? 'none' : 'flex'}}>
             <StartLogo />
