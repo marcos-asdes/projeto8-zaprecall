@@ -11,11 +11,6 @@ body {
     border: 1px solid #DBDBDB;
 }
 
-/* App component */
-.App {
-
-}
-
 /* StartScreen component */
 .StartScreen {
     height: 100vh;
