@@ -1,17 +1,17 @@
 import FlashCard from './FlashCard.js';
 
 let deck1 = [
-    {question:"O que é JSX?", answer:"Uma extensão de linguagem do JavaScript", userAnswer:""},
-    {question:"O React é __ ", answer:"uma biblioteca JavaScript para construção de interfaces", userAnswer:""},
-    {question:"Componentes devem iniciar com __ ", answer:"letra maiúscula", userAnswer:""},
-    {question:"Podemos colocar __ dentro do JSX", answer:"expressões", userAnswer:""},
-    {question:"O ReactDOM nos ajuda __", answer:"interagindo com a DOM para colocar componentes React na mesma", userAnswer:""},
-    {question:"Usamos o npm para __", answer:"gerenciar os pacotes necessários e suas dependências", userAnswer:""},
-    {question:"Usamos props para __", answer:"passar diferentes informações para componentes", userAnswer:""},
-    {question:"Usamos estado (state) para __", answer:"dizer para o React quais informações quando atualizadas devem renderizar a tela novamente", userAnswer:""}
+    {question:"O que é JSX?", answer:"Uma extensão de linguagem do JavaScript"},
+    {question:"O React é __ ", answer:"uma biblioteca JavaScript para construção de interfaces"},
+    {question:"Componentes devem iniciar com __ ", answer:"letra maiúscula"},
+    {question:"Podemos colocar __ dentro do JSX", answer:"expressões"},
+    {question:"O ReactDOM nos ajuda __", answer:"interagindo com a DOM para colocar componentes React na mesma"},
+    {question:"Usamos o npm para __", answer:"gerenciar os pacotes necessários e suas dependências"},
+    {question:"Usamos props para __", answer:"passar diferentes informações para componentes"},
+    {question:"Usamos estado (state) para __", answer:"dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"}
 ];
 
-export default function Main() {
+export default function Main({sequenceUserAnswer, setSequenceUserAnswer}) {
     /* shuffle function - by Mateus Battisti from the horadecodar.com.br */
     (function shuffleArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -24,7 +24,7 @@ export default function Main() {
         <div className='Main'>
         {
             deck1.map((flashCard, index) => {
-            return <FlashCard key={index} questionNumber={index+1} question={flashCard.question} answer={flashCard.answer} userAnswer={flashCard.userAnswer} />
+            return <FlashCard key={index} sequenceUserAnswer={sequenceUserAnswer} setSequenceUserAnswer={setSequenceUserAnswer} questionNumber={index+1} question={flashCard.question} answer={flashCard.answer} />
             })
         }
         </div>

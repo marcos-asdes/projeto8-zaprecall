@@ -1,16 +1,16 @@
 import React from 'react';
 
-export default function FlashCard({questionNumber, question, answer, userAnswer}) {
+export default function FlashCard({questionNumber, question, answer, sequenceUserAnswer, setSequenceUserAnswer}) {
     const [openQuestion,setOpenQuestion] = React.useState(false);
     const [flip, setFlip] = React.useState(false);
-    const [usrAnswer, setUsrAnswer] = React.useState("");
+    const [userAnswer, setUserAnswer] = React.useState("");
     let questionStatusImg = "";
     return (
         <div className="FlashCard">
             <FlashCardQuestionNumberFace questionNumber={questionNumber} openQuestion={openQuestion} setOpenQuestion={setOpenQuestion}/>
             <FlashCardFrontFace question={question} openQuestion={openQuestion} flip={flip} setFlip={setFlip}/>
-            <FlashCardBackFace answer={answer} openQuestion={openQuestion} flip={flip} usrAnswer={usrAnswer} setUsrAnswer={setUsrAnswer}/>
-            <FlashCardFinalStatus questionNumber={questionNumber} userAnswer={userAnswer} questionStatusImg={questionStatusImg} openQuestion={openQuestion} flip={flip} usrAnswer={usrAnswer} />
+            <FlashCardBackFace answer={answer} openQuestion={openQuestion} flip={flip} userAnswer={userAnswer} setUserAnswer={setUserAnswer} sequenceUserAnswer={sequenceUserAnswer} setSequenceUserAnswer={setSequenceUserAnswer}/>
+            <FlashCardFinalStatus questionNumber={questionNumber} setSequenceUserAnswer={setSequenceUserAnswer} questionStatusImg={questionStatusImg} openQuestion={openQuestion} flip={flip} userAnswer={userAnswer} />
         </div>
     )
 }
@@ -37,37 +37,46 @@ function FlashCardFrontFace({question, openQuestion, flip, setFlip}) {
     )
 }
 
-function FlashCardBackFace({answer, openQuestion, flip, usrAnswer, setUsrAnswer}) {
+function FlashCardBackFace({answer, openQuestion, flip, userAnswer, setUserAnswer, sequenceUserAnswer, setSequenceUserAnswer}) {
+    const addItemRed = () => {
+        setSequenceUserAnswer([...sequenceUserAnswer, "../assets/images/red.png"]);
+        setUserAnswer("red");
+    }
+    const addItemYellow = () => {
+        setSequenceUserAnswer([...sequenceUserAnswer, "../assets/images/yellow.png"]);
+        setUserAnswer("yellow");
+    }
+    const addItemGreen = () => {
+        setSequenceUserAnswer([...sequenceUserAnswer, "../assets/images/green.png"]);
+        setUserAnswer("green");
+    }
     return (
-        <div className="backFace" style={{display: (openQuestion && flip && (usrAnswer==="")) ? 'flex' : 'none'}}>
+        <div className="backFace" style={{display: (openQuestion && flip && (userAnswer==="")) ? 'flex' : 'none'}}>
             <p>{answer}</p>
             <div className="backFacebuttons">
-                <button id="red" onClick={() => setUsrAnswer("red")}>Não lembrei</button>
-                <button id="yellow" onClick={() => setUsrAnswer("yellow")}>Quase não lembrei</button>
-                <button id="green" onClick={() => setUsrAnswer("green")}>Zap!</button>
+                <button id="red" onClick={addItemRed}>Não lembrei</button>
+                <button id="yellow" onClick={addItemYellow}>Quase não lembrei</button>
+                <button id="green" onClick={addItemGreen}>Zap!</button>
             </div>
         </div>
     )
 }
 
-function FlashCardFinalStatus({questionNumber, usrAnswer, questionStatusImg, openQuestion, flip, userAnswer}) {
-    if (usrAnswer==="red"){
+function FlashCardFinalStatus({questionNumber, userAnswer, questionStatusImg, openQuestion, flip}) {
+    if (userAnswer==="red"){
         questionStatusImg = "../assets/images/red.png";
-        userAnswer = "red";
     } 
-    else if (usrAnswer==="yellow"){
+    else if (userAnswer==="yellow"){
         questionStatusImg = "../assets/images/yellow.png";
-        userAnswer = "orange";
     }
-    else if (usrAnswer==="green"){
+    else if (userAnswer==="green"){
         questionStatusImg = "../assets/images/green.png";
-        userAnswer = "green";
     }
     else {
         questionStatusImg = "";
     }
     return (
-        <div className="finalStatus" style={{display: (openQuestion && flip && (usrAnswer!=="")) ? 'flex' : 'none'}}>
+        <div className="finalStatus" style={{display: (openQuestion && flip && (userAnswer!=="")) ? 'flex' : 'none'}}>
             <p style={{color: userAnswer}}>Pergunta {questionNumber}</p>
             <div className="finalStatusImg">
                 <img src={questionStatusImg} alt="final status" />
