@@ -19,11 +19,11 @@ export default function Footer({sequenceUserAnswer}) {
 function FooterInProgress({count, sequenceUserAnswer}){
     return (
         <div className="InProgress">
-            <p>{count}/8 Concluídos</p>
-            <div className="emoticons">
+            <p>{count}/8 CONCLUÍDOS</p>
+            <div>
                 {
-                sequenceUserAnswer.map( UserAnswer => {
-                    return <img src={UserAnswer} alt={UserAnswer} />
+                sequenceUserAnswer.map( (UserAnswer, index) => {
+                return <img key={index} src={UserAnswer} alt={UserAnswer} />
                 })
                 }
             </div>
@@ -32,15 +32,32 @@ function FooterInProgress({count, sequenceUserAnswer}){
 }
 
 function FooterCompleted({sequenceUserAnswer}){
+    let finalMsg = "";
+    let finalImg = "";
+    let finalImgTxt = "";
+    const GreenCount = sequenceUserAnswer.filter(UserAnswer => UserAnswer==="../assets/images/green.png");
+    const YellowCount = sequenceUserAnswer.filter(UserAnswer => UserAnswer==="../assets/images/yellow.png");
+    if((GreenCount.length+YellowCount.length) === 8){
+        finalMsg = "Você não esqueceu de nenhum flashcard!"
+        finalImg = "../assets/images/party.png";
+        finalImgTxt = "Parabéns!"
+    } else {
+        finalMsg = "Ainda faltam alguns... Mas não desanime!";
+        finalImg = "../assets/images/sad.png";
+        finalImgTxt = "Putz..."
+    }
     return (
         <div className="Completed">
-            <div className="emoticon"></div>
-            <p></p>
-            <p>8/8 Concluídos</p>
-            <div className="emoticons">
+            <div className="finalEmoticon">
+                <img src={finalImg} alt={finalImg} />
+                <p>{finalImgTxt}</p>
+            </div>
+            <p>{finalMsg}</p>
+            <p>8/8 CONCLUÍDOS</p>
+            <div>
                 {
-                sequenceUserAnswer.map( UserAnswer => {
-                return <img src={UserAnswer} alt={UserAnswer} />
+                sequenceUserAnswer.map( (UserAnswer, index) => {
+                return <img key={index} src={UserAnswer} alt={UserAnswer} />
                 })
                 }
             </div>

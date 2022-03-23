@@ -114,6 +114,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 80px;
 }
 
 /* FlashCard component */
@@ -286,8 +287,85 @@ body {
 }
 
 .InProgress {
-    width: 375px;
+    width: 100vw;
     height: 70px;
     background-color: #FFFFFF;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.InProgress p {
+    width: 160px;
+    height: 22px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #333333;
+    margin-bottom: 6px;
+}
+
+.InProgress img {
+    width: 23px;
+    height: 23px;
+    margin-right: 5px;
+}
+
+.Completed {
+    width: 100vw;
+    height: 171px;
+    background-color: #FFFFFF;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.finalEmoticon {
+    width: 140px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.finalEmoticon img {
+    width: 23px;
+    height: 23px;
+    margin-top: 0px;
+}
+
+.finalEmoticon p {
+    width: 88px;
+    height: 22px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #333333;
+}
+
+.Completed p {
+    width: 250px;
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #333333;
+    margin-top: 10px;
+}
+
+.Completed img {
+    width: 23px;
+    height: 23px;
+    margin-right: 5px;
+    margin-top: 6px;
 }
